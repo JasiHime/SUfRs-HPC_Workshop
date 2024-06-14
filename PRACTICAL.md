@@ -1,4 +1,11 @@
 # SUfRs - HPC Workshop
+## Overview of the Practical System
+The system used in this practical session is GES Petrarch. This cluster was built by RCaaS HPC Engineers with hardware provided by the School of Geography and Earth Sciences within the College of Science and Engineering at the University of Glasgow in 2023-2024.
+
+The School of Geography and Earth Sciences allowed us to use this platform for the purpose of this workshop, however, as of now the cluster is only available to users of this school.
+
+![System-Overview](img/system-overview.png "System Overview")
+
 ## Connecting
 Go ahead and open your terminal, then log in to the cluster. Replace `<yourUsername>` with the username on your credential sheet supplied by the instructors.
 
