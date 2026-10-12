@@ -39,10 +39,11 @@ localscratch -> /tmp/localscratch/<yourUsername>
 sharedscratch -> /mnt/scratch/<yourUsername>
 ```
 
-You can move data to the system using SFTP / SSH. A very accessible SFTP client with a GUI is [WinSCP](https://winscp.net/). Our teaching materials are saved in a public GitHub repository and for ease of access, we will just download them using `wget`.
+You can move data to the system using SFTP / SSH. A very accessible SFTP client with a GUI is [WinSCP](https://winscp.net/). Our workshop materials are saved in a public GitHub repository and for ease of access, we will just download them using `wget` and then unarchive them with `tar`.
 
 ```
-[<yourUsername>@ln01 ~]$ wget <insert-link-here>
+[<yourUsername>@ln01 ~]$ wget https://github.com/JasiHime/SUfRs-HPC_Workshop/raw/refs/heads/main/download/hpc-workshop-october-2026.tar
+[<yourUsername>@ln01 ~]$ tar -xf hpc-workshop-october-2026.tar
 ```
 
 ## Software
@@ -207,6 +208,7 @@ First, we have to save our python code into a file. For this create a file with 
 ```
 import os
 node = os.getenv("SLURMD_NODENAME")
+jobid = os.getenv("SLURM_JOBID")
 myfile = open("demofile-" + jobid + ".txt", "w")
 myfile.write("I am doing compute work on " + node)
 exit()
@@ -255,13 +257,13 @@ You can run this job as many times as you want by just using the sbatch command.
 
 Lets say you want to run a job 100 times, it is still quite tedious having to type this like 100 times. This is where Array Jobs are your friend. You can easily modify a job to be an Array job and run it as many times as you want!
 
-In your materials you should fine a submission script, lets look at it:
+In your materials you should find a submission script, lets look at it:
 
 ```
 [<yourUsername>@ln01 ~]$ cat arrayTestJob.sh
 ```
 
-You will see the parameter `--array` at the bottom of the "Slurm Settings". This parameter defines how many times this job script should be run in an array. So if we run this job, we will get 3 output files:
+You will see the parameter `--array` at the bottom of the "Slurm Settings". This parameter defines how many times this job script should be run in an array. So if we run this job once, we will get 3 output files:
 
 ```
 [<yourUsername>@ln01 ~]$ sbatch arrayTestJob.sh
@@ -275,7 +277,7 @@ These jobs are fully independant, meaning, they will all be queued individually.
 
 ### Parallel Job
 
-You can also use the HPC to run parallel jobs. For this you’ll need a program, that I capable to do this. In our example, we are running a simple MPI program, that just reports back where it ran. MPI is even possible to run parallel over multiple nodes, thi is what we are doing here.
+You can also use the HPC to run parallel jobs. For this you’ll need a program, that I capable to do this. In our example, we are running a simple MPI program, that just reports back where it ran. MPI is even possible to run parallel over multiple nodes, this is what we are doing here.
 
 Have a look at the script from the workshop materials and note, that we set it to run over 2 nodes, with 4 tasks each:
 
@@ -307,9 +309,9 @@ Submitted batch job <JobID>
 You can see all running jobs on the system using the `squeue` command. If you only want to see your own jobs, you can specify your username with the `-u` parameter. If you only want to see your job queued earlier, you can use the `-j` parameter followed by your JobID.
 
 ```
-[<yourUsername>@headnode01]$ squeue
-[<yourUsername>@headnode01]$ squeue -u <yourUsername>
-[<yourUsername>@headnode01]$ squeue -j <JobID>
+[<yourUsername>@ln01]$ squeue
+[<yourUsername>@ln01]$ squeue -u <yourUsername>
+[<yourUsername>@ln01]$ squeue -j <JobID>
 ```
 
 The output is as follows:
@@ -331,19 +333,19 @@ A list of all available Job-Accounting-Fields can be found here: [sacct manual](
 In our first example, we’ll show an overview of the requested resources for that job. You should see, these are the values we provided in the “SLURM SETTINGS” section of the script:
 
 ```
-[<yourUsername>@headnode01]$ sacct -j <JobID> -o JobID,User,ReqCPUS,ReqMem,ReqNodes,TimeLimit -X
+[<yourUsername>@ln01]$ sacct -j <JobID> -o JobID,User,ReqCPUS,ReqMem,ReqNodes,TimeLimit -X
 ```
 
 Now let’s get some more information on how and where our job ran. In this output we see that the job ran for 1 minute, and it completed with exit code 0, which means there were no errors:
 
 ```
-[<yourUsername>@headnode01]$ sacct -j <JobID> -o JobID,NodeList,Start,End,Elapsed,State,ExitCode -X
+[<yourUsername>@ln01]$ sacct -j <JobID> -o JobID,NodeList,Start,End,Elapsed,State,ExitCode -X
 ```
 
 Say we want to check if our job ran efficiently, we could use the `seff` command. It uses data from the Slurm accounting database, to create calculate how efficiently your job ran. Let’s use this utility and try to adjust our script, so it is more efficiently specified:
 
 ```
-[<yourUsername>@headnode01]$ seff <JobID>
+[<yourUsername>@ln01]$ seff <JobID>
 ```
 
 Based on the following three lines, we’ll make the adjustments on your script. Its fine to have a little bit of a buffer, we don’t want a job to get killed just because it overran a couple of seconds of what is expected. For CPU efficiency however, we want to get as close to 100% as possible:
