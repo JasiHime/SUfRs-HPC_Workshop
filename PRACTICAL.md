@@ -107,7 +107,7 @@ All the steps from here on are specific to Slurm. There are other schedulers wit
 Look at what resources you have available to you on the cluster, using the Slurm `sinfo` command. 
 
 ```
-[<yourUsername>@ln01 ~]$ sinfo -o "%n %c %m %G" | column -t
+[<yourUsername>@ln01 ~]$ sinfo -o "%n %c %m %G %d" | column -t
 HOSTNAMES  CPUS  MEMORY   GRES
 node011    16    63757    (null)
 node012    28    386341   (null)
