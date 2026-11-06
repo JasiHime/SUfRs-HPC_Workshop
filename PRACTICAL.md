@@ -2,6 +2,20 @@
 ## Overview of the Practical System
 The system used in this practical session is Lochan. The system is a highly heterogeneous cluster, running Rocky Linux 9. It was built and is managed by Research Computing as a Service (RCaaS), and is running Slurm as its scheduler.
 
+## About the materials
+In the content below, whenever you see text within angle brackets `<>`, this is to signify a value that is either going to be different for every user, or it is a variable, that is to be replaced by you. For example if you see `<JobID>` replace the whole string, including the angle brackets with your JobID:
+
+**Example:** `squeue -j <JobID>`
+
+**Your Command:** `squeue -j 12345`
+
+You will also find code snippets. These are displayed as interactions on a console. This means they show you the prompt, command and the expected output. When copying to the console, only copy the content after the `$`. In the example below this would be `<command-entered-by-user>`:
+
+```
+[<yourUsername>@ln01 ~]$ <command-entered-by-user>
+<command-output>
+```
+
 ## Connecting
 Go ahead and open your terminal, then log in to the cluster. Replace `<yourUsername>` with your GUID. You will only be able to access the system, if you requested an account before the workshop!
 
