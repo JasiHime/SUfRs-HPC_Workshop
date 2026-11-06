@@ -65,9 +65,9 @@ As the system uses Environment Modules, the available software on the system can
 
 ```
 [<yourUsername>@ln01 ~]$ module available
----- /mnt/software/modulefiles ----
-apptainer/1.5.3/gnu1150  dmtcp/4.2.0/gnu1150     miniforge/26.3.2-3/gnu1150  R/4.6.1/gnu1150
-cuda/12.5.1/gnu1150      juliaup/1.21.0/gnu1150  openmpi/5.0.10/gnu1150
+-------------------------- /mnt/software/modulefiles ---------------------------
+apptainer/1.5.3/gnu1150       miniforge/26.3.2-3/gnu1150
+cuda/12.5.1/gnu1150           netcdf/4.10.1/gnu1150_hdf5220_ompi5010
 
 [removed some of the output here for clarity]
 ```
