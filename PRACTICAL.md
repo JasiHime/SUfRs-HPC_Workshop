@@ -56,8 +56,8 @@ sharedscratch -> /mnt/scratch/<yourUsername>
 You can move data to the system using SFTP / SSH. A very accessible SFTP client with a GUI is [WinSCP](https://winscp.net/). Our workshop materials are saved in a public GitHub repository and for ease of access, we will just download them using `wget` and then unarchive them with `tar`.
 
 ```
-[<yourUsername>@ln01 ~]$ wget https://github.com/JasiHime/SUfRs-HPC_Workshop/raw/refs/heads/main/download/hpc-workshop-october-2026.tar
-[<yourUsername>@ln01 ~]$ tar -xf hpc-workshop-october-2026.tar
+[<yourUsername>@ln01 ~]$ wget https://github.com/JasiHime/SUfRs-HPC_Workshop/raw/refs/heads/main/download/hpc-workshop-november-2026.tar
+[<yourUsername>@ln01 ~]$ tar -xf hpc-workshop-november-2026.tar
 ```
 
 ## Software
