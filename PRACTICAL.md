@@ -122,21 +122,21 @@ Look at what resources you have available to you on the cluster, using the Slurm
 
 ```
 [<yourUsername>@ln01 ~]$ sinfo -o "%n %c %m %G %d" | column -t
-HOSTNAMES  CPUS  MEMORY   GRES
-node011    16    63757    (null)
-node012    28    386341   (null)
-node013    64    2051471  (null)
-node014    64    2051471  (null)
-node015    64    1019280  (null)
-node016    64    1019280  (null)
-node017    64    2063333  (null)
-node018    64    515318   (null)
-node019    64    515318   (null)
-node020    64    515318   (null)
-node021    64    515318   (null)
-node023    64    256919   (null)
-gpu003     32    256928   gpu:l40s:1
-gpu004     36    256870   gpu:v100:3
+HOSTNAMES  CPUS  MEMORY   GRES        TMP_DISK
+node013    64    2051471  (null)      5017600
+node015    64    1019280  (null)      614400
+node017    64    2063333  (null)      307200
+node019    64    515318   (null)      1126400
+node020    64    515318   (null)      1126400
+node021    64    515318   (null)      1126400
+node018    64    515318   (null)      1126400
+node011    16    63757    (null)      1945600
+node012    28    386341   (null)      2764800
+node014    64    2051471  (null)      1126400
+node016    64    1019280  (null)      1024000
+node023    64    256919   (null)      0
+gpu004     36    256870   gpu:v100:3  6758400
+gpu003     32    256928   gpu:l40s:1  7168000
 ```
 
 The nodes are grouped into partitions in Slurm, this is a way to define what type of machine you want to work with. You can list all available partitions also using the `sinfo` command:
