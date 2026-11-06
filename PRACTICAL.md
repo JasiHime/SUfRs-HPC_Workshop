@@ -149,7 +149,7 @@ mpi          up 7-00:00:00      4   idle node[018-021]
 gpu          up 7-00:00:00      2   idle gpu[003-004]
 ```
 
-For this course, node014 and node016 were reserved, meaning we’ll only be using these two. We also only make use of the default partition “cpu”, which is marked with a * in the output.
+For this course, `node014` and `node016` were reserved, meaning we’ll only be using these two. We also only make use of the default partition “cpu”, which is marked with a * in the output.
 
 ## Interactive Job
 You can start an interactive job using the `srun` command. You can tell, you are on a different server by the prompt, which should now feature the name of a compute node:
@@ -265,7 +265,7 @@ slurm-<JobID>.out
 demofile-<JobID>.txt
 ```
 
-You can run this job as many times as you want by just using the sbatch command. Like this you have access to the power of the HPC compute nodes, without ever having to log into one yourself.
+You can run this job as many times as you want by just using the `sbatch` command. Like this you have access to the power of the HPC compute nodes, without ever having to log into one yourself.
 
 ### Array Job
 
@@ -287,7 +287,7 @@ slurm-<JobID>_2.out
 slurm-<JobID>_3.out
 ```
 
-These jobs are fully independant, meaning, they will all be queued individually. So if the cluster has 5 CPUs free, and you run an array with 8 jobs each requesting 1 CPU, 5 jobs will be run and 3 queued.
+These jobs are fully independent, meaning, they will all be queued individually. So if the cluster has 5 CPUs free, and you run an array with 8 jobs each requesting 1 CPU, 5 jobs will be run and 3 queued.
 
 ### Parallel Job
 
