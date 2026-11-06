@@ -214,7 +214,7 @@ exit
 ## Batch job submission
 If you are thinking the previous example was quite tedious and not very convenient, you will like batch job submissions.
 
-First, we have to save our python code into a file. For this create a file with the .py ending and add the contents of step 3- 7in the interactive job. You can create and edit files using either `vi` or `nano`, whatever is more comfortable to you:
+First, we have to save our python code into a file. For this create a file with the .py ending and add the contents of step 3- 7in the interactive job. You can create and edit files using the UNIX file editor of our choice. `nano` is a very simple one, if you are unfamiliar. To exit and save in Nano do `ctrl+X` → `Y` → `Enter`. 
 
 ```
 [<yourUsername>@ln01 ~]$ nano myPythonCode.py
